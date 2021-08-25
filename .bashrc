@@ -116,8 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#custom
-
+#custom shell prompt
+# requires powerline font: 
+# sudo apt install fonts-powerline
+# or https://powerline.readthedocs.io/en/latest/installation.html
 source ~/.fancy-bash-promt.sh
 
 # bat
@@ -138,3 +140,5 @@ MANPATH=/usr/share/man
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias wis='python3 ~/projects/dotfiles/wis.py'
