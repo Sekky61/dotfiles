@@ -5,6 +5,11 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+# setup symlink for .bashrc and .fancy-bash-prompt.sh
+# -s symbolic link instead of hard link
+ln -s ".bashrc" ~
+ln -s ".fancy-bash-prompt.sh" ~
+
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
 
@@ -17,7 +22,15 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install gcc curl gnome-tweaks jq imwheel fonts-powerline -y
+apt-get install gcc curl gnome-tweaks jq imwheel fonts-powerline exa preload -y
+
+##
+##  Rust
+##
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ldconfig # not sure if necessary, load program names used later in script
+rustup component add clippy 
 
 ##
 ##  VS Code
@@ -60,8 +73,26 @@ curl \
 dpkg -i bat* # install package
 rm -rf bat* # cleanup
 
-#todo exa
+##
+##  brew
+##
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "Follow Brew instructions above"
+
+##
+##  exa
+##
+
+brew install exa
+
 #todo temp folder for temp files
 
 # probably done: todo add imwheel to startup apps
-    
+  
+echo "Done. Restart shell"
+
+# What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
+# allow partner repositories
+# set DNS to 1.1.1.1 and 1.0.0.1
+# czech layout in settings > region
