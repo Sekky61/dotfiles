@@ -5,10 +5,12 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-# setup symlink for .bashrc and .fancy-bash-prompt.sh
+# setup hard link for .bashrc and .fancy-bash-prompt.sh
 # -s symbolic link instead of hard link
-ln -s ".bashrc" ~
-ln -s ".fancy-bash-prompt.sh" ~
+
+#todo should delete old .bashrc ?
+ln ".bashrc" ~
+ln ".fancy-bash-prompt.sh" ~
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -22,7 +24,8 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install gcc curl gnome-tweaks jq imwheel fonts-powerline exa preload -y
+apt-get install make gcc g++ curl gnome-tweaks jq imwheel fonts-powerline preload -y
+# exa is for ubu > 2.10
 
 ##
 ##  Rust
@@ -87,8 +90,6 @@ echo "Follow Brew instructions above"
 brew install exa
 
 #todo temp folder for temp files
-
-# probably done: todo add imwheel to startup apps
   
 echo "Done. Restart shell"
 
@@ -96,3 +97,5 @@ echo "Done. Restart shell"
 # allow partner repositories
 # set DNS to 1.1.1.1 and 1.0.0.1
 # czech layout in settings > region
+
+# add imwheel to startup apps
