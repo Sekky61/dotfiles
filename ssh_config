@@ -1,0 +1,7 @@
+Host merlin
+    HostName merlin.fit.vutbr.cz
+    User xmajer21
+
+Host eva
+    HostName eva.fit.vutbr.cz
+    User xmajer21

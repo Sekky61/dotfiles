@@ -5,6 +5,11 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+if ! [ -x "$(command -v git)" ]; then
+  echo 'Error: git is not installed.' >&2
+  exit 1
+fi
+
 # setup hard link for .bashrc and .fancy-bash-prompt.sh
 # -s symbolic link instead of hard link
 
@@ -33,7 +38,7 @@ apt-get install make gcc g++ curl gnome-tweaks jq imwheel fonts-powerline preloa
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ldconfig # not sure if necessary, load program names used later in script
-rustup component add clippy 
+rustup component add clippy rustfmt
 
 ##
 ##  VS Code
@@ -80,7 +85,7 @@ rm -rf bat* # cleanup
 ##  brew
 ##
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh </dev/null)"
 echo "Follow Brew instructions above"
 
 ##
@@ -88,6 +93,11 @@ echo "Follow Brew instructions above"
 ##
 
 brew install exa
+
+## ssh folder 
+
+mkdir -p ~/.ssh
+cp ssh_config ~/.ssh/config
 
 #todo temp folder for temp files
   
@@ -97,5 +107,3 @@ echo "Done. Restart shell"
 # allow partner repositories
 # set DNS to 1.1.1.1 and 1.0.0.1
 # czech layout in settings > region
-
-# add imwheel to startup apps
