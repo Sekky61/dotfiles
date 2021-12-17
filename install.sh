@@ -10,12 +10,15 @@ if ! [ -x "$(command -v git)" ]; then
   exit 1
 fi
 
+git config --global user.name "Michal Majer"
+git config --global user.email "misa@majer.cz"
+
 # setup hard link for .bashrc and .fancy-bash-prompt.sh
 # -s symbolic link instead of hard link
 
 #todo should delete old .bashrc ?
-ln ".bashrc" ~
-ln ".fancy-bash-prompt.sh" ~
+cp ".bashrc" ~
+cp ".fancy-bash-prompt.sh" ~
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -38,7 +41,8 @@ apt-get install make gcc g++ curl gnome-tweaks jq imwheel fonts-powerline preloa
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ldconfig # not sure if necessary, load program names used later in script
-rustup component add clippy rustfmt
+
+source $HOME/.cargo/env
 
 ##
 ##  VS Code
@@ -81,27 +85,27 @@ curl \
 dpkg -i bat* # install package
 rm -rf bat* # cleanup
 
-##
-##  brew
-##
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh </dev/null)"
-echo "Follow Brew instructions above"
-
-##
-##  exa
-##
-
-brew install exa
-
 ## ssh folder 
 
 mkdir -p ~/.ssh
 cp ssh_config ~/.ssh/config
 
-#todo temp folder for temp files
+# theme
+# guide https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps
+
+unzip Mojave-dark.zip
+mv Mojave-dark ~/.themes/Mojave-dark
+
+# icon set - manual todo
+# move to ~/.icons
+# https://github.com/keeferrourke/la-capitaine-icon-theme/releases
+
+unzip icons.zip
+mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
   
-echo "Done. Restart shell"
+echo "Done. Restart shell. Run install2.sh Open tweaks to change theme"
+
+#todo temp folder for temp files
 
 # What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
 # allow partner repositories
