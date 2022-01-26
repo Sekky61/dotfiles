@@ -29,7 +29,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks jq imwheel fonts-powerline preload -y
+apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline preload -y
 # exa is for ubu > 2.10
 
 ##
@@ -94,10 +94,16 @@ echo "Follow Brew instructions above"
 
 brew install exa
 
+## npm nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "After restart:\n\tnvm install node"
+
 ## ssh folder 
 
 mkdir -p ~/.ssh
 cp ssh_config ~/.ssh/config
+
 
 #todo temp folder for temp files
   
