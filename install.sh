@@ -32,7 +32,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline preload -y
+apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline thefuck preload -y
 # exa is for ubu > 2.10
 
 ##
