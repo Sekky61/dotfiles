@@ -32,7 +32,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks jq imwheel fonts-powerline preload -y
+apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline preload -y
 # exa is for ubu > 2.10
 
 ##
@@ -85,6 +85,11 @@ curl \
 dpkg -i bat* # install package
 rm -rf bat* # cleanup
 
+## npm nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "After restart:\n\tnvm install node"
+
 ## ssh folder 
 
 mkdir -p ~/.ssh
@@ -104,6 +109,7 @@ unzip icons.zip
 mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
   
 echo "Done. Restart shell. Run install2.sh Open tweaks to change theme"
+
 
 #todo temp folder for temp files
 
