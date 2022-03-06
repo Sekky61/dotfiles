@@ -107,6 +107,8 @@ echo "Done. Restart shell. Run install2.sh Open tweaks to change theme"
 
 #todo temp folder for temp files
 
+# todo case insensitive search
+
 # What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
 # allow partner repositories
 # set DNS to 1.1.1.1 and 1.0.0.1
