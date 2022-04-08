@@ -120,7 +120,7 @@ fi
 # requires powerline font: 
 # sudo apt install fonts-powerline
 # or https://powerline.readthedocs.io/en/latest/installation.html
-source ~/.fancy-bash-promt.sh
+source ~/.fancy-bash-prompt.sh
 
 # bat
 alias cat='bat'

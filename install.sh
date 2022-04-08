@@ -5,6 +5,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+# todo enforce run from dotfiles directory (relative paths break)
+
 if ! [ -x "$(command -v git)" ]; then
   echo 'Error: git is not installed.' >&2
   exit 1
@@ -32,7 +34,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline thefuck preload -y
+apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline thefuck python3-distutils preload -y
 # exa is for ubu > 2.10
 
 ##
@@ -99,6 +101,7 @@ cp ssh_config ~/.ssh/config
 # guide https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps
 
 unzip Mojave-dark.zip
+mkdir -p ~/.themes
 mv Mojave-dark ~/.themes/Mojave-dark
 
 # icon set - manual todo
@@ -106,10 +109,16 @@ mv Mojave-dark ~/.themes/Mojave-dark
 # https://github.com/keeferrourke/la-capitaine-icon-theme/releases
 
 unzip icons.zip
+mkdir -p ~/.icons
 mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
   
 echo "Done. Restart shell. Run install2.sh Open tweaks to change theme"
 
+# todo resume script
+
+# todo apply theme
+
+# todo add chrome icon
 
 #todo temp folder for temp files
 

@@ -16,6 +16,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ##  exa
 ##
 
-brew install exa
+brew install exa # todo exa is on newer ubuntu
 
-echo "Done. Restart shell. Run install2.sh"
+echo "Done. Restart shell."
