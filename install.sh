@@ -33,7 +33,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks npm jq fonts-powerline thefuck python3-distutils preload exa -y
+apt-get install make clang curl gnome-tweaks npm jq fonts-powerline thefuck python3-distutils preload exa -y
 
 
 # font
