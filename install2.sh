@@ -8,6 +8,9 @@ echo $USER
 
 nvm install node
 
+npm install -g tldr
+cp .tldrrc ~/.tldrrc
+
 echo "Installing mold"
 git clone https://github.com/rui314/mold.git
 cd mold
@@ -25,6 +28,10 @@ make install
 
 # add option to /etc/inputrc to enable case-insensitive tab completion for all users
 echo 'set completion-ignore-case On' >> /etc/inputrc
+
+# nushell
+# https://github.com/nushell/nushell/releases
+# move binaries to /usr/bin
 
 
 echo "Done. Restart shell."

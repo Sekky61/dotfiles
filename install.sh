@@ -124,7 +124,7 @@ echo "Done. Restart shell. Run install2.sh."
 
 #todo temp folder for temp files
 
-# todo case insensitive search
+# todo keyboard shortcuts for nu, suspend
 
 # What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
 # allow partner repositories
