@@ -122,8 +122,6 @@ fi
 # or https://powerline.readthedocs.io/en/latest/installation.html
 source ~/.fancy-bash-prompt.sh
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # unlock commands installed by brew
-
 # bat
 alias cat='bat'
 MANPAGER="sh -c 'col -bx | bat -l man -p'"
