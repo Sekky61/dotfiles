@@ -1,8 +1,10 @@
 # Dotfiles
 
-1. `chmod +x install.sh install2.sh theme.sh`
-2. `./install.sh`
-3. Restart shell
-4. `./install2.sh`
-5. Restart shell
-6. `./theme.sh`
+
+1. Setup git to remember credentials
+2. `chmod +x install.sh install2.sh theme.sh`
+3. `./install.sh`
+4. Restart shell
+5. `./install2.sh`
+6. Restart shell
+7. `./theme.sh`
