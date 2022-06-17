@@ -23,5 +23,8 @@ make install
 #
 # 
 
+# add option to /etc/inputrc to enable case-insensitive tab completion for all users
+echo 'set completion-ignore-case On' >> /etc/inputrc
+
 
 echo "Done. Restart shell."

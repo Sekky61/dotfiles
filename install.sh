@@ -107,6 +107,7 @@ unzip Mojave-dark.zip
 mkdir -p ~/.themes
 mv Mojave-dark ~/.themes/Mojave-dark
 gsettings set org.gnome.desktop.interface gtk-theme "Mojave-dark"
+gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true # top bar on both monitors
 
 # icon set
 # https://github.com/keeferrourke/la-capitaine-icon-theme/releases
