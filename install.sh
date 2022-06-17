@@ -29,13 +29,17 @@ apt-get update && apt-get upgrade -y
 ##  Apt programs
 ##
 
-# imwheel         - mousewheel fix
 # jq              - JSON parser
 # gnome-tweaks    - wallpaper, themes
 # fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make gcc g++ curl gnome-tweaks npm jq imwheel fonts-powerline thefuck python3-distutils preload -y
-# exa is for ubu > 2.10
+apt-get install make gcc g++ curl gnome-tweaks npm jq fonts-powerline thefuck python3-distutils preload exa -y
+
+
+# font
+mkdir -p ~/.fonts
+cp "Menlo for Powerline.ttf" ~/.fonts
+fc-cache -vf ~/.fonts
 
 ##
 ##  Rust
@@ -90,7 +94,6 @@ rm -rf bat* # cleanup
 ## npm nvm
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-echo "After restart:\n\tnvm install node"
 
 ## ssh folder 
 
@@ -103,22 +106,20 @@ cp ssh_config ~/.ssh/config
 unzip Mojave-dark.zip
 mkdir -p ~/.themes
 mv Mojave-dark ~/.themes/Mojave-dark
+gsettings set org.gnome.desktop.interface gtk-theme "Mojave-dark"
 
-# icon set - manual todo
-# move to ~/.icons
+# icon set
 # https://github.com/keeferrourke/la-capitaine-icon-theme/releases
+
+# todo download icons instead of them being in repo
 
 unzip icons.zip
 mkdir -p ~/.icons
 mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
   
-echo "Done. Restart shell. Run install2.sh Open tweaks to change theme"
+echo "Done. Restart shell. Run install2.sh."
 
 # todo resume script
-
-# todo apply theme
-
-# todo add chrome icon
 
 #todo temp folder for temp files
 
