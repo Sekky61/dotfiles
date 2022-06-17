@@ -15,12 +15,8 @@ fi
 git config --global user.name "Michal Majer"
 git config --global user.email "misa@majer.cz"
 
-# setup hard link for .bashrc and .fancy-bash-prompt.sh
-# -s symbolic link instead of hard link
-
 #todo should delete old .bashrc ?
 cp ".bashrc" ~
-cp ".fancy-bash-prompt.sh" ~
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -31,9 +27,8 @@ apt-get update && apt-get upgrade -y
 
 # jq              - JSON parser
 # gnome-tweaks    - wallpaper, themes
-# fonts-powerline - fancy prompt font
 echo "Installing common programs"
-apt-get install make clang curl gnome-tweaks npm jq fonts-powerline thefuck python3-distutils preload exa -y
+apt-get install make clang curl gnome-tweaks npm jq thefuck python3-distutils preload exa -y
 
 
 # font

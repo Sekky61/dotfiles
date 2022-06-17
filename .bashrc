@@ -116,11 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#custom shell prompt
-# requires powerline font: 
-# sudo apt install fonts-powerline
-# or https://powerline.readthedocs.io/en/latest/installation.html
-source ~/.fancy-bash-prompt.sh
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/atomic.omp.json)"
 
 # bat
 alias cat='bat'

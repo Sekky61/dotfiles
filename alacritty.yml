@@ -7,6 +7,10 @@ window:
     columns: 90
     lines: 50
 
+font:
+  normal:
+    family: RobotoMono Nerd Font
+
 colors:
   # Default colors
   primary:
