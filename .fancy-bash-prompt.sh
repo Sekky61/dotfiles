@@ -219,7 +219,7 @@ bash_prompt() {
 	local TEXTEFFECT_1=$NONE
 	
 	local FONT_COLOR_2=$D_GRAY
-	local BACKGROUND_2=$L_YELLOW
+	local BACKGROUND_2=$YELLOW
 	local TEXTEFFECT_2=$NONE
 	
 	local FONT_COLOR_3=$D_GRAY
