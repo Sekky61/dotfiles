@@ -3,6 +3,9 @@ window:
   padding:
     x: 5
     y: 5
+  dimensions:
+    columns: 90
+    lines: 50
 
 colors:
   # Default colors
