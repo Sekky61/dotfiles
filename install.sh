@@ -86,6 +86,21 @@ curl \
 dpkg -i bat* # install package
 rm -rf bat* # cleanup
 
+# todo auto or change to install with cargo
+# broot
+# https://dystroy.org/broot/install/
+# move toc
+#
+# add this to nushell config (todo add config to dotfiles):
+#
+# def-env br_cmd [] {
+#   let cmd_file = (^mktemp | str trim);
+#   ^broot --outcmd $cmd_file;
+#   let-env cmd = ((open $cmd_file) | str trim);
+#   ^rm $cmd_file;
+# }
+# alias br = (br_cmd | cd ($env.cmd | str replace "cd" "" | str trim))
+
 ## npm nvm
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
