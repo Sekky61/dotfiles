@@ -132,7 +132,7 @@ echo "Done. Restart shell. Run install2.sh."
 
 # todo resume script
 
-#todo temp folder for temp files
+# todo temp folder for temp files
 
 # todo keyboard shortcuts for nu, suspend
 
@@ -140,3 +140,9 @@ echo "Done. Restart shell. Run install2.sh."
 # allow partner repositories
 # set DNS to 1.1.1.1 and 1.0.0.1
 # czech layout in settings > region
+
+# todo Heroku (?) curl https://cli-assets.heroku.com/install.sh | sh
+# todo Insomnia
+# todo tool https://github.com/slimm609/checksec.sh/zipball/main
+
+# todo move all configs to config folder
