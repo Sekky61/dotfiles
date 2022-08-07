@@ -9,7 +9,7 @@ mv atomic.omp.json ~/.poshthemes/atomic.omp.json
 # oh-my-posh print primary --config ~/.poshthemes/atomic.omp.json
 
 # font
-unzip RobotoMono.zip -d tempfont
+unzip resources/RobotoMono.zip -d tempfont
 mv tempfont/* /usr/local/share/fonts
 fc-cache -f -v
 rm -r tempfont/

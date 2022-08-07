@@ -8,3 +8,5 @@
 5. `./install2.sh`
 6. Restart shell
 7. `./theme.sh`
+8. `./posh.sh`
+9. `./terminator.sh`

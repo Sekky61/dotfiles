@@ -113,7 +113,7 @@ cp cfg/ssh_config ~/.ssh/config
 # theme
 # guide https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps
 
-unzip Mojave-dark.zip
+unzip resources/Mojave-dark.zip
 mkdir -p ~/.themes
 mv Mojave-dark ~/.themes/Mojave-dark
 gsettings set org.gnome.desktop.interface gtk-theme "Mojave-dark"
@@ -124,7 +124,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true # top b
 
 # todo download icons instead of them being in repo
 
-unzip icons.zip
+unzip resources/icons.zip # gets unzipped to cwd
 mkdir -p ~/.icons
 mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
   
