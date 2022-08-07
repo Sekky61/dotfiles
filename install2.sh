@@ -9,7 +9,7 @@ echo $USER
 nvm install node
 
 npm install -g tldr
-cp .tldrrc ~/.tldrrc
+cp cfg/.tldrrc ~/.tldrrc
 
 echo "Installing mold"
 git clone https://github.com/rui314/mold.git

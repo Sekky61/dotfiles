@@ -15,8 +15,8 @@ fi
 git config --global user.name "Michal Majer"
 git config --global user.email "misa@majer.cz"
 
-#todo should delete old .bashrc ?
-cp ".bashrc" ~
+# todo should old .bashrc be deleted ?
+cp "cfg/.bashrc" ~
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -108,7 +108,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ## ssh folder 
 
 mkdir -p ~/.ssh
-cp ssh_config ~/.ssh/config
+cp cfg/ssh_config ~/.ssh/config
 
 # theme
 # guide https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps
