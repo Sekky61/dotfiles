@@ -5,7 +5,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-# todo enforce run from dotfiles directory (relative paths break)
+exec 1>>out_log 2>>error_log
+echo "=== INSTALL ==="
 
 if ! [ -x "$(command -v git)" ]; then
   echo 'Error: git is not installed.' >&2
@@ -16,7 +17,7 @@ git config --global user.name "Michal Majer"
 git config --global user.email "misa@majer.cz"
 
 # todo should old .bashrc be deleted ?
-cp "cfg/.bashrc" ~
+cp "${BASH_SOURCE%/*}/cfg/.bashrc" ~
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -25,15 +26,14 @@ apt-get update && apt-get upgrade -y
 ##  Apt programs
 ##
 
-# jq              - JSON parser
 # gnome-tweaks    - wallpaper, themes
 echo "Installing common programs"
-apt-get install make clang curl gnome-tweaks npm jq thefuck python3-distutils preload exa -y
+apt-get install make clang curl gnome-tweaks npm thefuck python3-distutils preload exa -y
 
 
 # font
 mkdir -p ~/.fonts
-cp "Menlo for Powerline.ttf" ~/.fonts
+cp "${BASH_SOURCE%/*}/Menlo for Powerline.ttf" ~/.fonts
 fc-cache -vf ~/.fonts
 
 ##
@@ -50,6 +50,7 @@ source $HOME/.cargo/env
 ##
 
 snap install --classic code
+
 # install settings
 git clone https://github.com/Sekky61/vscode-settings.git
 cp vscode-settings/settings.json vscode-settings/keybindings.json ~/.config/Code/User
@@ -77,14 +78,7 @@ rm -rf google-chrome-stable_current_amd64.deb # todo temp folder
 ##
 
 echo "Installing bat"
-curl \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/sharkdp/bat/releases/latest \
-  | jq '[.assets | .[] | select(.name | contains("amd64.deb"))] | last | .browser_download_url' \
-  | xargs -L 1 wget
-
-dpkg -i bat* # install package
-rm -rf bat* # cleanup
+cargo install bat
 
 # todo auto or change to install with cargo
 # broot
@@ -108,25 +102,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ## ssh folder 
 
 mkdir -p ~/.ssh
-cp cfg/ssh_config ~/.ssh/config
-
-# theme
-# guide https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps
-
-unzip resources/Mojave-dark.zip
-mkdir -p ~/.themes
-mv Mojave-dark ~/.themes/Mojave-dark
-gsettings set org.gnome.desktop.interface gtk-theme "Mojave-dark"
-gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true # top bar on both monitors
-
-# icon set
-# https://github.com/keeferrourke/la-capitaine-icon-theme/releases
-
-# todo download icons instead of them being in repo
-
-unzip resources/icons.zip # gets unzipped to cwd
-mkdir -p ~/.icons
-mv la-capitaine-icon-theme-0.6.2 ~/.icons/la-capitaine-icon-theme-0.6.2
+cp "${BASH_SOURCE%/*}/cfg/ssh_config" ~/.ssh/config
   
 echo "Done. Restart shell. Run install2.sh."
 
@@ -144,5 +120,3 @@ echo "Done. Restart shell. Run install2.sh."
 # todo Heroku (?) curl https://cli-assets.heroku.com/install.sh | sh
 # todo Insomnia
 # todo tool https://github.com/slimm609/checksec.sh/zipball/main
-
-# todo move all configs to config folder
