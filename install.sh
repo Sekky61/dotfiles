@@ -30,12 +30,6 @@ apt-get update && apt-get upgrade -y
 echo "Installing common programs"
 apt-get install make clang curl gnome-tweaks npm thefuck python3-distutils preload exa -y
 
-
-# font
-mkdir -p ~/.fonts
-cp "${BASH_SOURCE%/*}/Menlo for Powerline.ttf" ~/.fonts
-fc-cache -vf ~/.fonts
-
 ##
 ##  Rust
 ##
@@ -70,7 +64,7 @@ rm -rf vscode-settings
 
 echo "Installing Google Chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb
+apt-get install ./google-chrome-stable_current_amd64.deb
 rm -rf google-chrome-stable_current_amd64.deb # todo temp folder
 
 ##
