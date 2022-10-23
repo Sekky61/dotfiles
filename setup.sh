@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#
+# The main script
+#
+# Assumes child scripts would kill program if something went wrong
+#
+
+# Check if root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+# functions
+
+function echo_success() {
+	echo "[ OK ]"
+}
+
+function cleanup() {
+    rm -fr tmp
+    echo "Script finished."
+}
+
+# Prepare tmp folder
+mkdir -p tmp
+
+echo "Actions will be logged in setup_log"
+#exec 1>>setup_log 2>>setup_log
+
+echo "Updating and Upgrading"
+apt-get update && apt-get upgrade -y
+
+echo "===  GIT  ==="
+source scripts/git.sh
+echo_success
+
+echo "===  CONFIGS  ==="
+source scripts/configs.sh
+echo_success
+
+echo "===  posh  ==="
+source scripts/posh.sh
+echo_success
+
+echo "===  rust  ==="
+source scripts/rust.sh
+echo_success
+
+echo "===  ssh  ==="
+source scripts/ssh.sh
+echo_success
+
+echo "===  terminator  ==="
+source scripts/terminator.sh
+echo_success
+
+echo "===  theme  ==="
+source scripts/theme.sh
+echo_success
+
+echo "===  vscode  ==="
+source scripts/vscode.sh
+echo_success
+
+# Finish
+cleanup
+
+# Missing from install.sh
+# bat
+# broot

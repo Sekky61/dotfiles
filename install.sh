@@ -23,7 +23,6 @@ apt-get update && apt-get upgrade -y
 ##  Apt programs
 ##
 
-# gnome-tweaks    - wallpaper, themes
 echo "Installing common programs"
 apt-get install make clang curl gnome-tweaks npm thefuck python3-distutils preload exa -y
 apt-get install krename kdiff3 krusader shutter -y
@@ -113,12 +112,11 @@ echo "Done. Restart shell. Run install2.sh."
 # todo Insomnia
 # todo tool https://github.com/slimm609/checksec.sh/zipball/main
 
-# todo look into .gitconfig
-# 
-
 # todo alt+tab scroll fix: imwheel
 # start automatically after startup
 # look into ~/.imwheelrc (https://github.com/freeplane/freeplane/issues/134)
 
 # todo Shutter na screenshoty
 # todo krusader theme and first launch
+
+# todo hotspot macro

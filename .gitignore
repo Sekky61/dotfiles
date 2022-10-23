@@ -1,3 +1,2 @@
-vsc*
-out_log
-error_log
+vscode-settings
+*_log
