@@ -154,3 +154,5 @@ c_test () {
 }
 
 alias color_test='c_test'
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.

@@ -13,9 +13,6 @@ if ! [ -x "$(command -v git)" ]; then
   exit 1
 fi
 
-git config --global user.name "Michal Majer"
-git config --global user.email "misa@majer.cz"
-
 # todo should old .bashrc be deleted ?
 cp "${BASH_SOURCE%/*}/cfg/.bashrc" ~
 
@@ -29,6 +26,7 @@ apt-get update && apt-get upgrade -y
 # gnome-tweaks    - wallpaper, themes
 echo "Installing common programs"
 apt-get install make clang curl gnome-tweaks npm thefuck python3-distutils preload exa -y
+apt-get install krename kdiff3 krusader shutter -y
 
 ##
 ##  Rust
@@ -114,3 +112,13 @@ echo "Done. Restart shell. Run install2.sh."
 # todo Heroku (?) curl https://cli-assets.heroku.com/install.sh | sh
 # todo Insomnia
 # todo tool https://github.com/slimm609/checksec.sh/zipball/main
+
+# todo look into .gitconfig
+# 
+
+# todo alt+tab scroll fix: imwheel
+# start automatically after startup
+# look into ~/.imwheelrc (https://github.com/freeplane/freeplane/issues/134)
+
+# todo Shutter na screenshoty
+# todo krusader theme and first launch

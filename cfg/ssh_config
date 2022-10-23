@@ -5,3 +5,15 @@ Host merlin
 Host eva
     HostName eva.fit.vutbr.cz
     User xmajer21
+
+Host barbora
+    HostName barbora.it4i.cz
+    User xmajer21
+    ForwardX11 yes
+    UpdateHostKeys no
+
+Host karolina
+    HostName karolina.it4i.cz
+    User xmajer21
+    ForwardX11 yes
+    UpdateHostKeys no
