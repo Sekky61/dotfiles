@@ -154,5 +154,7 @@ c_test () {
 }
 
 alias color_test='c_test'
+alias python=python3
+alias pip=pip3
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.

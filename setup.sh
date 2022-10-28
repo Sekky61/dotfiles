@@ -64,9 +64,31 @@ echo "===  vscode  ==="
 source scripts/vscode.sh
 echo_success
 
+echo "===  programs  ==="
+source scripts/programs.sh
+echo_success
+
 # Finish
 cleanup
 
-# Missing from install.sh
-# bat
-# broot
+# TODOs
+
+# todo keyboard shortcuts for suspend, hotspot
+
+# What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
+# allow partner repositories
+# set DNS to 1.1.1.1 and 1.0.0.1
+# czech layout in settings > region
+
+# todo tool https://github.com/slimm609/checksec.sh/zipball/main
+
+# todo alt+tab scroll fix: imwheel
+# start automatically after startup
+# look into ~/.imwheelrc (https://github.com/freeplane/freeplane/issues/134)
+
+# todo krusader theme and first launch
+
+# todo hotspot macro
+
+# todo https://github.com/madler/pigz
+

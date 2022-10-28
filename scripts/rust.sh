@@ -12,3 +12,8 @@ echo "Rust: add these lines to ~/.cargo/config.toml
 linker = \"clang\"
 rustflags = [\"-C\", \"link-arg=-fuse-ld=/path/to/mold\"]
 "
+
+rustup component add clippy
+cargo install cargo-expand
+cargo install cargo-watch
+cargo install cleanall
