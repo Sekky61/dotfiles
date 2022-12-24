@@ -15,4 +15,4 @@ mv atomic.omp.json ~/.poshthemes/atomic.omp.json
 # font
 unzip resources/RobotoMono.zip -d tmp/tempfont
 mv tmp/tempfont/* /usr/local/share/fonts
-fc-cache -f -v
+fc-cache -f -v # Update font cache

@@ -78,7 +78,9 @@ cleanup
 # What else to do? https://www.youtube.com/watch?v=GrI5c9PXS5k
 # allow partner repositories
 # set DNS to 1.1.1.1 and 1.0.0.1
+
 # czech layout in settings > region
+# sudo setxkbmap -layout cz
 
 # todo tool https://github.com/slimm609/checksec.sh/zipball/main
 
@@ -92,3 +94,18 @@ cleanup
 
 # todo https://github.com/madler/pigz
 
+# todo custom alias for hexdump, ...
+
+# todo git credential helper
+# sudo apt install libsecret-1-dev
+# git config --global credential.helper libsecret
+# check if configured correctly with: git credential-libsecret
+
+# todo zoxide https://github.com/ajeetdsouza/zoxide
+# cargo install zoxide --locked
+# or
+# apt install zoxide
+# eval "$(zoxide init bash)" 
+
+# todo fzf fuzzyfinder, used by zoxide
+# sudo apt-get install fzf
