@@ -116,7 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/atomic.omp.json)"
+# old prompt
+# eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/atomic.omp.json)"
 
 # bat
 alias cat='bat'
@@ -158,5 +159,6 @@ alias python=python3
 alias pip=pip3
 
 eval "$(zoxide init bash)"
+eval "$(starship init bash)"
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.

@@ -113,3 +113,10 @@ cleanup
 # todo navi
 # cargo install --locked navi
 # todo some custom cheatsheets
+# cheat to remove node_modules and build folders
+
+# todo starship
+# replace posh with starship
+# cargo install starship --locked
+# config to ~/.config/starship.toml
+# https://starship.rs/config/#prompt
