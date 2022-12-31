@@ -109,3 +109,7 @@ cleanup
 
 # todo fzf fuzzyfinder, used by zoxide
 # sudo apt-get install fzf
+
+# todo navi
+# cargo install --locked navi
+# todo some custom cheatsheets
