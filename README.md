@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal Ubuntu dotfiles
+Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.com/Sekky61/vscode-settings) for setting up VSCode.
 
 ## Install
 
