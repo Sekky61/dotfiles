@@ -27,7 +27,7 @@ function cleanup() {
 mkdir -p tmp
 
 echo "Actions will be logged in setup_log"
-#exec 1>>setup_log 2>>setup_log
+exec 1>>setup_log 2>>setup_log
 
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
@@ -40,12 +40,12 @@ echo "===  CONFIGS  ==="
 source scripts/configs.sh
 echo_success
 
-echo "===  posh  ==="
-source scripts/posh.sh
-echo_success
-
 echo "===  rust  ==="
 source scripts/rust.sh
+echo_success
+
+echo "===  font and prompt  ==="
+source scripts/font_prompt.sh
 echo_success
 
 echo "===  ssh  ==="
@@ -68,10 +68,16 @@ echo "===  programs  ==="
 source scripts/programs.sh
 echo_success
 
+echo "===  shortcuts  ==="
+source scripts/shortcuts.sh
+echo_success
+
 # Finish
 cleanup
 
+#
 # TODOs
+#
 
 # todo keyboard shortcuts for suspend, hotspot
 
@@ -114,9 +120,3 @@ cleanup
 # cargo install --locked navi
 # todo some custom cheatsheets
 # cheat to remove node_modules and build folders
-
-# todo starship
-# replace posh with starship
-# cargo install starship --locked
-# config to ~/.config/starship.toml
-# https://starship.rs/config/#prompt
