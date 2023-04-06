@@ -120,3 +120,5 @@ cleanup
 # cargo install --locked navi
 # todo some custom cheatsheets
 # cheat to remove node_modules and build folders
+
+# todo id3tool

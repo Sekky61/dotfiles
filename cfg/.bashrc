@@ -161,4 +161,10 @@ alias pip=pip3
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"
 
+# use: download-podcast <youtube url>
+alias download-podcast='yt-dlp -x --audio-format mp3'
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
+
+# add dotfiles/workflows to PATH
+export PATH=$PATH:~/dotfiles/workflows
