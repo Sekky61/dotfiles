@@ -14,7 +14,7 @@ fi
 
 yt-dlp -x --audio-format mp3 $1
 
-# remove id
+# remove id TODO leaves a space
 rename 's/\[.*\]//' *\ \[*\].mp3 *.mp3
 
 # add album name

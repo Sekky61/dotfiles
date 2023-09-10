@@ -122,3 +122,7 @@ cleanup
 # cheat to remove node_modules and build folders
 
 # todo id3tool
+# todo guake
+
+# todo gnome-session-properties
+# start guake

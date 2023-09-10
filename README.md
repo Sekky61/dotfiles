@@ -13,6 +13,6 @@ Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.co
 * VS Code, extensions and settings
 * Rust toolchain
 * `bash.rc`
-* Nerdfont Roboto Mono
+* Nerdfont Roboto Mono, InconsolataGo
 * Ubuntu Theme and icons
 * Settings for terminator
