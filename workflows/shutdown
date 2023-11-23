@@ -1,0 +1,7 @@
+#/bin/bash
+
+#1. kill chrome (call close_chrome.sh)
+source ./close_chrome.sh
+
+#2. shutdown
+shutdown -h now
