@@ -16,3 +16,8 @@ Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.co
 * Nerdfont Roboto Mono, InconsolataGo
 * Ubuntu Theme and icons
 * Settings for terminator
+
+## TODO
+
+* awesomewm
+* .vscode, .xinit, .xprofile, etc 
