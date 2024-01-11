@@ -14,17 +14,22 @@ fi
 
 # functions
 
+function ask() {
+  read -p "$1 (Y/n): " resp
+  if [ -z "$resp" ]; then
+      response_lc="y" # empty is Yes
+  else
+      response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
+  fi
+
+  [ "$response_lc" = "y" ]
+}
+
 function echo_success() {
 	echo "[ OK ]"
 }
 
-function cleanup() {
-    rm -fr tmp
-    echo "Script finished."
-}
-
-# Prepare tmp folder
-mkdir -p tmp
+# Installation starts here
 
 echo "Actions will be logged in setup_log"
 exec 1>>setup_log 2>>setup_log
@@ -32,47 +37,30 @@ exec 1>>setup_log 2>>setup_log
 echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
 
-echo "===  GIT  ==="
-source install/git.sh
-echo_success
+# Prepare tmp folder
+echo "Preparing tmp folder"
+mkdir -p tmp
 
-echo "===  CONFIGS  ==="
-source install/configs.sh
-echo_success
-
-echo "===  rust  ==="
-source install/rust.sh
-echo_success
-
-echo "===  font and prompt  ==="
-source install/font_prompt.sh
-echo_success
-
-echo "===  ssh  ==="
-source install/ssh.sh
-echo_success
-
-echo "===  terminator  ==="
-source install/terminator.sh
-echo_success
-
-echo "===  gnome theme  ==="
-source install/gnome_theme.sh
-echo_success
-
-echo "===  vscode  ==="
-source install/vscode.sh
-echo_success
-
-echo "===  programs  ==="
-source install/programs.sh
-echo_success
-
-echo "===  gnome shortcuts  ==="
-source install/gnome_shortcuts.sh
-echo_success
+# Ask which files should be sourced
+echo "Do you want to install: "
+for file in install/*; do
+  if [ -f "$file" ]; then
+    filename=$(basename "$file")
+    if ask "${filename}?"; then
+      source "$file"
+      echo_success
+    fi
+  fi
+done
 
 # Finish
+
+function cleanup() {
+  echo "Cleaning up..."
+  rm -fr tmp
+  echo "Script finished."
+}
+
 cleanup
 
 #
