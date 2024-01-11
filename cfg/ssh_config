@@ -17,3 +17,22 @@ Host karolina
     User xmajer21
     ForwardX11 yes
     UpdateHostKeys no
+
+Host rpi
+    HostName 192.168.0.200
+    User majerpi 
+    IdentityFile  ~/.ssh/id_rsa
+
+Host rpi-wifi 
+    HostName 192.168.0.201
+    User majerpi 
+    IdentityFile ~/.ssh/id_rsa
+
+Host sc-nas.fit.vutbr.cz
+    HostName sc-nas.fit.vutbr.cz
+    User xmajer21
+    IdentityFile ~/.ssh/id_ed25519
+
+Host sc-gpu1
+    HostName sc-gpu1.fit.vutbr.cz
+    User xmajer21

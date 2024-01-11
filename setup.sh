@@ -33,43 +33,43 @@ echo "Updating and Upgrading"
 apt-get update && apt-get upgrade -y
 
 echo "===  GIT  ==="
-source scripts/git.sh
+source install/git.sh
 echo_success
 
 echo "===  CONFIGS  ==="
-source scripts/configs.sh
+source install/configs.sh
 echo_success
 
 echo "===  rust  ==="
-source scripts/rust.sh
+source install/rust.sh
 echo_success
 
 echo "===  font and prompt  ==="
-source scripts/font_prompt.sh
+source install/font_prompt.sh
 echo_success
 
 echo "===  ssh  ==="
-source scripts/ssh.sh
+source install/ssh.sh
 echo_success
 
 echo "===  terminator  ==="
-source scripts/terminator.sh
+source install/terminator.sh
 echo_success
 
 echo "===  theme  ==="
-source scripts/theme.sh
+source install/theme.sh
 echo_success
 
 echo "===  vscode  ==="
-source scripts/vscode.sh
+source install/vscode.sh
 echo_success
 
 echo "===  programs  ==="
-source scripts/programs.sh
+source install/programs.sh
 echo_success
 
 echo "===  shortcuts  ==="
-source scripts/shortcuts.sh
+source install/shortcuts.sh
 echo_success
 
 # Finish
