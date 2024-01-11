@@ -165,9 +165,6 @@ eval "$(starship init bash)"
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 
-# add dotfiles/workflows to PATH
-export PATH=$PATH:~/dotfiles/workflows:/usr/local/go/bin:~/data/idea-IC-232.8660.185/bin:~/programs/nvim/bin
-
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

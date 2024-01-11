@@ -9,7 +9,7 @@ Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.co
 
 ## Overview
 
-* Software like tldr, navi, node, bat, mold, exa, ...
+* Misc software like tldr, node, bat, mold, exa, ...
 * VS Code, extensions and settings
 * Rust toolchain
 * `bash.rc`
