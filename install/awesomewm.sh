@@ -4,4 +4,4 @@
 apt-get install awesome -y
 
 # link config dir
-ln -s ~/dotfiles/awesome ~/.config/awesome
+ln -sf ~/dotfiles/awesome ~/.config/awesome

@@ -4,4 +4,4 @@
 apt-get install neovim -y
 
 # link config dir
-ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -sf ~/dotfiles/nvim ~/.config/nvim
