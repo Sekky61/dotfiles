@@ -56,8 +56,8 @@ echo "===  terminator  ==="
 source install/terminator.sh
 echo_success
 
-echo "===  theme  ==="
-source install/theme.sh
+echo "===  gnome theme  ==="
+source install/gnome_theme.sh
 echo_success
 
 echo "===  vscode  ==="
@@ -68,8 +68,8 @@ echo "===  programs  ==="
 source install/programs.sh
 echo_success
 
-echo "===  shortcuts  ==="
-source install/shortcuts.sh
+echo "===  gnome shortcuts  ==="
+source install/gnome_shortcuts.sh
 echo_success
 
 # Finish

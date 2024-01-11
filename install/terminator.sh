@@ -3,8 +3,8 @@
 
 apt-get install terminator
 
-# apply config
-cp cfg/config ~/.config/terminator
+# apply config (symlink)
+ls -s ~/.config/terminator/config cfg/terminator_config
 
 # TODO
 # make terminator active shell (type number with)
