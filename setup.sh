@@ -114,3 +114,6 @@ cleanup
 
 # todo gnome-session-properties
 # start guake
+
+# todo zerotier
+# curl -s https://install.zerotier.com | sudo bash

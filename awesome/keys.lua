@@ -16,16 +16,38 @@ function dump(o)
     end
  end
 
- -- todo: chrome shortcuts
+local vim_rule = { name = {"VIM", "vim", "Code", "/bin/bash"} }
+-- todo: chrome shortcuts
 -- change the rumes of the hotkey groups
 for i, v in pairs(hotkeys_popup.widget.default_widget.group_rules ) do
     -- if the name contains vim, then change the names when to show
     if string.find(i, "VIM") then
         -- https://awesomewm.org/apidoc/libraries/gears.matcher.html
-        v.rule_any.name = {"VIM", "vim", "Code", "/bin/bash"}
+        v.rule_any = vim_rule
         -- naughty.notify({title=i, text = dump(v), max_width=600, timeout=50})
     end
 end
+
+local my_vim_keys = {
+
+    ["VIM: zlepšováky"] = {{
+        modifiers = {},
+        keys = {
+            ['ciw']="change word under cursor",
+            ['_d']='delete without yank',
+        }
+    }, 
+    -- {
+    --     modifiers = {"Ctrl"},
+    --     keys = {
+    --         u="half page up",
+    --     }
+    -- }
+},
+}
+
+hotkeys_popup.widget.add_hotkeys(my_vim_keys)
+hotkeys_popup.widget.add_group_rules("VIM: z", { rule_any=vim_rule })
 
 local M = {}
 

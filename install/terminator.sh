@@ -4,7 +4,7 @@
 apt-get install terminator
 
 # apply config (symlink)
-ls -s ~/.config/terminator/config cfg/terminator_config
+ln -s ~/dotfiles/cfg/terminator_config ~/.config/terminator/config
 
 # TODO
 # make terminator active shell (type number with)

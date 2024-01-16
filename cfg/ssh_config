@@ -28,6 +28,11 @@ Host rpi-wifi
     User majerpi 
     IdentityFile ~/.ssh/id_rsa
 
+Host rpi-zerotier
+    HostName 10.242.204.103
+    User majerpi
+    IdentityFile ~/.ssh/id_rsa
+
 Host sc-nas.fit.vutbr.cz
     HostName sc-nas.fit.vutbr.cz
     User xmajer21
