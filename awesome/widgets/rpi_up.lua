@@ -1,7 +1,8 @@
 local wibox = require("wibox")
+local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
-require("status.rpi_up")
+local command = require("status.rpi_up")
 
 local icon = {
     widget = wibox.container.place,
@@ -20,7 +21,7 @@ local rpi_up = wibox.widget {
     markup = "-"
 }
 
-local widget = {
+local widget = wibox.widget {
     widget = wibox.container.margin,
     top = 6,
     bottom = 6,
@@ -46,12 +47,34 @@ local widget = {
     },
 }
 
-awesome.connect_signal("status::rpi_up", function(up)
+--- Adds mouse controls to the widget:
+--  - left click - retry connection
+widget:connect_signal("button::press", function(_, _, _, button)
+    if (button == 1) then
+        awful.spawn.easy_async(command, function(stdout, stderr, exitreason, exitcode)
+            awful.spawn("notify-send \"Pi\" \"Check complete\"")
+            update_widget(exitcode == 0)
+        end)
+    end
+end)
+
+-- Change color on hover. this is how to address children of a widget
+widget:connect_signal('mouse::enter', function()
+    widget.children[1].bg = beautiful.bg_focus
+end)
+
+widget:connect_signal('mouse::leave', function()
+    widget.children[1].bg = "#44475a"  -- Set it back to the original color
+end)
+
+function update_widget(up)
     rpi_up.font = beautiful.font
     --
     local online = up and "Online" or "Offline"
     local markup = online
     rpi_up.markup = markup
-end)
+end
+
+awesome.connect_signal("status::rpi_up", update_widget)
 
 return widget
