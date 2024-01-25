@@ -2,9 +2,8 @@
 ROFI_TEXT="exit"
 typeset -A menu
 rofi_theme_path="$HOME/.config/awesome/theme/spotlight-dark.rasi"
-# todo add i3lock-fancy to install script
 menu=(
-    ["lock"]="i3lock-fancy"
+    ["lock"]="i3lock -i /home/majer/dotfiles/awesome/theme/untroll-wp.png"
     ["shutdown"]="shutdown -h 0"
     ["suspend"]="systemctl suspend"
 )

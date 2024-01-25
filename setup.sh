@@ -111,6 +111,7 @@ cleanup
 
 # todo id3tool
 # todo guake
+# todo add i3lock-fancy to install script
 
 # todo gnome-session-properties
 # start guake
