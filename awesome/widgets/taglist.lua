@@ -5,8 +5,9 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local taglist = {}
+local modkey = "Mod4"
 
-local tag_width = 30
+local tag_width = 36
 local tag_height = 6
 local tag_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
 
@@ -32,18 +33,19 @@ function taglist.get(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         layout = {
-            spacing = 10,
+            spacing = 6,
             layout  = wibox.layout.fixed.horizontal
         },
         style = {shape = tag_shape},
         widget_template = {
             {
-                id = 'margin_role',
-                right = 15,
+                id = 'icon_margin_role',
+                right = 5,
                 widget = wibox.container.margin
             },
             id = 'background_role',
             widget = wibox.container.background,
+            forced_width = 20,
         },
         buttons = taglist_buttons
     }

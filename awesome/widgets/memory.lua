@@ -21,8 +21,8 @@ local memory = wibox.widget {
 
 local widget = {
     widget = wibox.container.margin,
-    top = 6,
-    bottom = 6,
+    top = 4,
+    bottom = 4,
 
     {
         widget = wibox.container.background,

@@ -17,8 +17,8 @@ local date = {
 local bg_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
 local hourclock = {
     widget = wibox.container.margin,
-    top = 6,
-    bottom = 6,
+    top = 4,
+    bottom = 4,
 
     {
         widget = wibox.container.background,

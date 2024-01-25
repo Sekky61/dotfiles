@@ -8,7 +8,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local dpi = xresources.apply_dpi
 
 -- local widget_padding = 8
-local wibar_height = 35
+local wibar_height = 28
 
 -- notification style
 -- prevent the icon size from being too big
@@ -73,8 +73,8 @@ mylauncher = awful.widget.launcher({ image = banana_path,
 local bg_shape = function (cr, w, h) gears.shape.rounded_rect(cr, w, h, 3) end
 local menubox = {
     widget = wibox.container.margin,
-    top = 6,
-    bottom = 6,
+    top = 4,
+    bottom = 4,
 
     {
         widget = wibox.container.background,
@@ -132,8 +132,8 @@ function wibar.get(s)
             widget = wibox.container.margin,
             -- left = 5,
             -- right = 5,
-            top = 10,
-            bottom = 10,
+            top = 8,
+            bottom = 8,
             taglist
         },
         { -- Right widgets
