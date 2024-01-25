@@ -38,9 +38,10 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
         "plaintext": true,
-        "markdown": false,
+        "markdown": true,
+        "scminput": false,
+        "yaml": false,
         "haskell": false
     },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",

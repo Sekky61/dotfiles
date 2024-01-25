@@ -28,23 +28,7 @@ for i, v in pairs(hotkeys_popup.widget.default_widget.group_rules ) do
     end
 end
 
-local my_vim_keys = {
-
-    ["VIM: zlepšováky"] = {{
-        modifiers = {},
-        keys = {
-            ['ciw']="change word under cursor",
-            ['_d']='delete without yank',
-        }
-    }, 
-    -- {
-    --     modifiers = {"Ctrl"},
-    --     keys = {
-    --         u="half page up",
-    --     }
-    -- }
-},
-}
+local my_vim_keys = require("vim_keys") 
 
 hotkeys_popup.widget.add_hotkeys(my_vim_keys)
 hotkeys_popup.widget.add_group_rules("VIM: z", { rule_any=vim_rule })

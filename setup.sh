@@ -117,3 +117,5 @@ cleanup
 
 # todo zerotier
 # curl -s https://install.zerotier.com | sudo bash
+
+# todo xsel

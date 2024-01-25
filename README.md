@@ -4,8 +4,8 @@ Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.co
 
 ## Install
 
-1. Run `setup.sh`
-2. In case of troubles, run manually scripts from `scripts` directory
+1. Run `setup.sh`. It will ask at each step if you want to install the component.
+  - In case of troubles, run manually scripts from `scripts` directory
 
 ## Overview
 
@@ -19,5 +19,5 @@ Personal Ubuntu dotfiles. Depends on my [VSCode settings repo](https://github.co
 
 ## TODO
 
-* awesomewm
+* raspberry pi
 * .vscode, .xinit, .xprofile, etc 

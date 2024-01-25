@@ -176,3 +176,8 @@ welcome_message () {
 
 # print welcome message
 # welcome_message
+
+# Alias for "gh copilot suggest "...args" "
+plz () {
+    gh copilot suggest --target shell "$@"
+}
