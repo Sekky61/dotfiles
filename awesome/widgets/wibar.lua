@@ -33,6 +33,7 @@ local myrpi = require("widgets.rpi_up")
 local myhourclock = require("widgets.hourclock")
 local mydateclock = require("widgets.dateclock")
 local spotify_widget = require("widgets.spotify.spotify")
+local battery = require("widgets.battery")
 
 local wibar = {}
 
@@ -124,6 +125,7 @@ function wibar.get(s)
                 menubox,
                 mydateclock,
                 myhourclock,
+                battery,
                 -- the Run: prompt
                 s.mypromptbox,
             },
