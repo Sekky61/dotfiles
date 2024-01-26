@@ -1,6 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local translate = require("widgets.translate")
 
 -- Useful function to dump a table
 function dump(o)
@@ -129,7 +130,10 @@ M.globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master '0%'") end),
     -- then in keyboard shortcuts put your shortcut for changing layout
    awful.key({ "Mod1" }, "Shift_L", function () kbdcfg.switch() end,
-    {description = "Switch keyboard layout", group = "client"})
+    {description = "Switch keyboard layout", group = "client"}),
+    awful.key({ modkey }, "c", function() 
+        translate.launch{api_key = '<api-key>', url = 'url'} 
+    end, { description = "run translate prompt", group = "launcher" })    
 )
 
 -- Bind all key numbers to tags.
