@@ -11,6 +11,11 @@
 -- my note:
 -- instalation here: https://github.com/streetturtle/awesome-wm-widgets/tree/master/spotify-widget
 
+-- Lua tips:
+-- 
+-- myobj:foo(n)    -- equivalent to  myobj.foo(myobj, n)
+-- A call of the form f{fields} is syntactic sugar for f({fields})
+
 local awful = require("awful")
 local wibox = require("wibox")
 local watch = require("awful.widget.watch")
@@ -100,8 +105,9 @@ local function worker(user_args)
             },
         },
         widget = wibox.container.margin,
-        top = 6,
-        bottom = 6,
+        -- This sets the margins of the wibox
+        top = 4,
+        bottom = 4,
         set_status = function(self, is_playing)
             self:get_children_by_id('icon')[1]:set_image(is_playing and play_icon or pause_icon)
             if dim_when_paused then
