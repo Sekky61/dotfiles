@@ -34,6 +34,7 @@ local myhourclock = require("widgets.hourclock")
 local mydateclock = require("widgets.dateclock")
 local spotify_widget = require("widgets.spotify.spotify")
 local battery = require("widgets.battery")
+local volume_widget = require('widgets.volume.volume')
 
 local wibar = {}
 
@@ -126,6 +127,7 @@ function wibar.get(s)
                 mydateclock,
                 myhourclock,
                 battery,
+                volume_widget(),
                 -- the Run: prompt
                 s.mypromptbox,
             },
