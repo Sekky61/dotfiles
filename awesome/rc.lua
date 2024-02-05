@@ -1,5 +1,7 @@
 -- Original config by dmun: https://github.com/dmun/awesome
 
+-- docs: https://awesomewm.org/apidoc
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -88,10 +90,19 @@ local function set_wallpaper(s)
     end
 end
 
+-- The tags 1 and 2 use max, tag 3+ use tiles
+local layouts = {
+    awful.layout.layouts[2],
+    awful.layout.layouts[2],
+    awful.layout.layouts[1],
+    awful.layout.layouts[1],
+    awful.layout.layouts[1],
+}
+
 awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5" }, s, layouts)
     -- Get the current tag in case it's not defined
     current_tag = s.selected_tag
     s.wibar = wibar.get(s)
@@ -195,6 +206,27 @@ end
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
 
 awful.spawn("notify-send \"AwesomeWM\" \"Welcome back, " .. os.getenv("USER") .. "\"")
+
+-- autostart windows
+
+function run_once(prg,arg_string,pname,screen)
+    if not prg then
+        do return nil end
+    end
+
+    if not pname then
+       pname = prg
+    end
+
+    -- launches if not running
+    if not arg_string then 
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+    else
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
+    end
+end
+
+-- run_once("google-chrome","startup", nil, 2)
 
 -- Run garbage collector regularly to prevent memory leaks
 gears.timer {

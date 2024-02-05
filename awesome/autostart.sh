@@ -29,3 +29,17 @@ fi
 if [ -x "$(command -v picom)" ]; then
   picom &
 fi
+
+# autorun if not already running
+
+# source: https://wiki.archlinux.org/title/awesome#Autostart
+run() {
+  if ! pgrep -f "$1" ;
+  then
+    "$@"&
+  fi
+}
+
+run google-chrome
+run code
+run spotify
