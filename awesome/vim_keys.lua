@@ -4,7 +4,6 @@ local my_vim_keys = {
     ["VIM: zlepšováky"] = {{
         modifiers = {},
         keys = {
-            ['caw']="change a word under cursor",
             ['_d']='delete without yank',
         }
     }, 
@@ -15,6 +14,23 @@ local my_vim_keys = {
     --     }
     -- }
     },
+    ["VIM: selects"] = {{
+        modifiers = {},
+        keys = {
+            ['(v/c/d)(i/a)X']="work Inside/Around X, where X is:",
+            ['w']="word",
+            ['"']="quotes",
+            ['(']="parentheses",
+            ['{']="braces",
+
+            ['[']="brackets",
+            ['t']="tag",
+            ['s']="sentence (continous lines)",
+            ['p']="paragraph",
+            ['b']="block",
+            -- ['<']="tags", -- causes problems
+        }
+    }},
     ["VIM: search"] = {{
         modifiers = {},
         keys = {

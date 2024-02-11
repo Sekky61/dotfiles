@@ -51,7 +51,7 @@ end
 
 kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { "us", "cz" } -- ua add later
+kbdcfg.layout = { "us", "cz", } -- "ua"} -- ua add later
 kbdcfg.current = 1  -- us is default
 kbdcfg.switch = function ()
    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1

@@ -7,3 +7,4 @@
 	email = misa@majer.cz
 [core]
 	editor = code
+	autocrlf = input
