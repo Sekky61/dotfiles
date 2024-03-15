@@ -170,10 +170,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = {}
   },
 
   -- "gc" to comment visual regions/lines
@@ -605,12 +603,19 @@ require("nvim-lightbulb").setup({
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    char_highlight_list = {
-        "IndentBlanklineIndent1"
-  },
+local highlight = {
+  "CursorColumn",
+  "Whitespace",
 }
+require("ibl").setup {
+  indent = { highlight = highlight, char = "" },
+  whitespace = {
+      highlight = highlight,
+      remove_blankline_trail = false,
+  },
+  scope = { enabled = false },
+}
+
 -- color the indent
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#8a8686 gui=nocombine]]
 
@@ -627,3 +632,5 @@ require("auto-session").setup {
  },
 }
 
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

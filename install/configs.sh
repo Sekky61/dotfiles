@@ -14,5 +14,7 @@ ln -sf ~/dotfiles/cfg/.tldrrc ~/.tldrrc
 ln -sf ~/dotfiles/cfg/.xinitrc ~/.xinitrc
 ln -sf ~/dotfiles/cfg/.xprofile ~/.xprofile
 
+ln -sf ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+
 # case insensitive tab completion
 echo 'set completion-ignore-case On' >> /etc/inputrc

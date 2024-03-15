@@ -41,6 +41,14 @@ local my_vim_keys = {
             ['N']="previous search",
         }
     }},
+    ["NVIM"] = {{
+        modifiers = {},
+        keys = {
+            ['space+space']="See open buffers",
+            ['[g']="Next error",
+            ['<leader>ca']="Code Action"
+        }
+    }}
 }
 
 return my_vim_keys
