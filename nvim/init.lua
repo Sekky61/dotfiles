@@ -502,6 +502,7 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
+  cssls = { filetypes = { 'css', 'scss', 'less', 'stylus' } },
 
   lua_ls = {
     Lua = {
@@ -586,14 +587,20 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
---
 
-vim.keymap.set('n', '<C-Right>', function()
-    local suggestion = vim.fn['copilot#Accept']("")
-    local bar = vim.fn['copilot#TextQueuedForInsertion']()
-    return vim.fn.split(bar, '[ .]')[1]
-end,
- { desc = 'Copilot accept a word.' })
+local function SuggestOneCharacter()
+  local suggestion = vim.fn['copilot#Accept']("")
+  local bar = vim.fn['copilot#TextQueuedForInsertion']()
+  return bar:sub(1, 1)
+end
+local function SuggestOneWord()
+  local suggestion = vim.fn['copilot#Accept']("")
+  local bar = vim.fn['copilot#TextQueuedForInsertion']()
+  return vim.fn.split(bar,  [[[ .]\zs]])[1]
+end
+
+vim.keymap.set('i', '<C-l>', SuggestOneCharacter, {expr = true, remap = false, desc = 'Copilot accept a character.'})
+vim.keymap.set('i', '<C-right>', SuggestOneWord, {expr = true, remap = false, desc = 'Copilot accept a word.'})
 
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true }
@@ -634,3 +641,13 @@ require("auto-session").setup {
 
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+
+-- Move current line up
+vim.api.nvim_set_keymap('n', '<A-up>', ':m-2<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-up>', '<Esc>:m-2<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-up>', ':m-2<CR>gv=gv', { noremap = true, silent = true })
+
+-- Move current line down
+vim.api.nvim_set_keymap('n', '<A-Down>', ':m+<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-Down>', '<Esc>:m+<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-Down>', ':m\'>+<CR>gv=gv', { noremap = true, silent = true })

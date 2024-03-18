@@ -58,8 +58,8 @@ end
 os.setlocale(os.getenv("LANG"))
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminator"
-editor = os.getenv("EDITOR") or "vim"
+terminal = "x-terminal-emulator"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 current_tag = nil
 

@@ -5,6 +5,7 @@ local my_vim_keys = {
         modifiers = {},
         keys = {
             ['_d']='delete without yank',
+            ['>']='indent'
         }
     }, 
     -- {
