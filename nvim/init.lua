@@ -40,8 +40,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader          = ' '
+vim.g.maplocalleader     = ' '
 
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
@@ -49,7 +49,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+local lazypath           = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     'git',
@@ -89,7 +89,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -113,7 +113,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -127,7 +127,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -146,7 +147,7 @@ require('lazy').setup({
       style = 'darker',
       highlights = {
         -- highlight the comment color brighter
-        ["@comment"] = {fg = '#ddd'},
+        ["@comment"] = { fg = '#ddd' },
       },
     },
   },
@@ -206,7 +207,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-  {'akinsho/toggleterm.nvim', version = "*", config = true},
+  { 'akinsho/toggleterm.nvim', version = "*", config = true },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -232,26 +233,26 @@ require('lazy').setup({
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require("nvim-tree").setup({
-    sort = {
-      sorter = "case_sensitive",
-    },
-    view = {
-      width = 30,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  })
+      require("nvim-tree").setup({
+        sort = {
+          sorter = "case_sensitive",
+        },
+        view = {
+          width = 30,
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = false,
+        },
+      })
     end,
   },
   {
     'numToStr/Comment.nvim',
     opts = {
-        -- add any options here
+      -- add any options here
     },
     lazy = false,
   },
@@ -260,9 +261,34 @@ require('lazy').setup({
   },
   { 'kosayoda/nvim-lightbulb' },
   'rmagatti/auto-session',
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+
+  -- efm language server
+  {
+    'creativenull/efmls-configs-nvim',
+    version = 'v1.x.x', -- version is optional, but recommended
+    dependencies = { 'neovim/nvim-lspconfig' },
+  },
+
+  -- treesitter context
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+  },
+  -- history tree
+  {
+    'mbbill/undotree',
+  }
 }, {})
 
-require("toggleterm").setup{
+require("toggleterm").setup {
   open_mapping = [[<c-\>]],
   direction = 'float',
 }
@@ -270,6 +296,12 @@ require("toggleterm").setup{
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+
+-- set the bottom safe area
+vim.opt.scrolloff = 8
+
+-- Draw a line at the 80th character
+vim.opt.colorcolumn = '80'
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -363,6 +395,9 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+-- see treesitter symbols
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').treesitter, { desc = '[S]earch [S]ymbols' })
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
@@ -447,7 +482,7 @@ local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
-   end
+    end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
@@ -474,13 +509,21 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
   nmap('<leader>f', function()
-      vim.lsp.buf.format { async = true }
-    end, '[F]ormat')
+    MyFormat()
+  end, '[F]ormat')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
+    MyFormat()
   end, { desc = 'Format current buffer with LSP' })
+end
+
+-- custom format function
+function MyFormat()
+  vim.lsp.buf.format {
+    async = true,
+    filter = function(client) return client.name ~= "tsserver" end
+  }
 end
 
 -- Enable the following language servers
@@ -492,16 +535,18 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
+  efm = {},
+
   clangd = {},
   pyright = {},
   tailwindcss = {},
   jsonls = {},
+  tsserver = {},
   custom_elements_ls = {},
   -- gopls = {},
   -- pyright = {},
   rust_analyzer = {},
-  tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = { filetypes = { 'css', 'scss', 'less', 'stylus' } },
 
   lua_ls = {
@@ -536,6 +581,47 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+local biome = require('efmls-configs.formatters.biome')
+local languages = {
+  typescript = { biome },
+  javascript = { biome },
+  typescriptreact = { biome },
+  javascriptreact = { biome },
+}
+
+local lsp_fmt_group = vim.api.nvim_create_augroup('LspFormattingGroup', {})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = lsp_fmt_group,
+  callback = function(ev)
+    local efm = vim.lsp.get_active_clients({ name = 'efm', bufnr = ev.buf })
+
+    if vim.tbl_isempty(efm) then
+      return
+    end
+
+    vim.lsp.buf.format({ name = 'efm' })
+  end,
+})
+
+local efmls_config = {
+  filetypes = vim.tbl_keys(languages),
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = languages,
+  },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+}
+
+require('lspconfig').efm.setup(vim.tbl_extend('force', efmls_config, {
+  -- Pass your custom lsp config below like on_attach and capabilities
+  --
+  -- on_attach = on_attach,
+  -- capabilities = capabilities,
+}))
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -596,11 +682,11 @@ end
 local function SuggestOneWord()
   local suggestion = vim.fn['copilot#Accept']("")
   local bar = vim.fn['copilot#TextQueuedForInsertion']()
-  return vim.fn.split(bar,  [[[ .]\zs]])[1]
+  return vim.fn.split(bar, [[[ .]\zs]])[1]
 end
 
-vim.keymap.set('i', '<C-l>', SuggestOneCharacter, {expr = true, remap = false, desc = 'Copilot accept a character.'})
-vim.keymap.set('i', '<C-right>', SuggestOneWord, {expr = true, remap = false, desc = 'Copilot accept a word.'})
+vim.keymap.set('i', '<C-l>', SuggestOneCharacter, { expr = true, remap = false, desc = 'Copilot accept a character.' })
+vim.keymap.set('i', '<C-right>', SuggestOneWord, { expr = true, remap = false, desc = 'Copilot accept a word.' })
 
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true }
@@ -617,8 +703,8 @@ local highlight = {
 require("ibl").setup {
   indent = { highlight = highlight, char = "" },
   whitespace = {
-      highlight = highlight,
-      remove_blankline_trail = false,
+    highlight = highlight,
+    remove_blankline_trail = false,
   },
   scope = { enabled = false },
 }
@@ -631,13 +717,33 @@ require("auto-session").setup {
   log_level = "error",
 
   cwd_change_handling = {
-    restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
-    pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
+    restore_upcoming_session = true,   -- already the default, no need to specify like this, only here as an example
+    pre_cwd_changed_hook = nil,        -- already the default, no need to specify like this, only here as an example
     post_cwd_changed_hook = function() -- example refreshing the lualine status line _after_ the cwd changes
-      require("lualine").refresh() -- refresh lualine so the new session name is displayed in the status bar
+      require("lualine").refresh()     -- refresh lualine so the new session name is displayed in the status bar
     end,
- },
+  },
 }
+
+require 'treesitter-context'.setup {
+  enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+  max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20,     -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}
+
+-- jump to the context
+vim.keymap.set("n", "[c", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true, desc = "Jump to previous context" })
 
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -651,3 +757,24 @@ vim.api.nvim_set_keymap('v', '<A-up>', ':m-2<CR>gv=gv', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<A-Down>', ':m+<CR>==', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<A-Down>', '<Esc>:m+<CR>==gi', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<A-Down>', ':m\'>+<CR>gv=gv', { noremap = true, silent = true })
+
+-- trouble.nvim - diagnostics
+-- https://github.com/folke/trouble.nvim?tab=readme-ov-file#-usage
+vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end, { desc = "Toggle diagnostics" })
+vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end, { desc = "Toggle quickfix" })
+
+-- Toggle nvimtree
+vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>", { desc = "Toggle nvimtree" })
+-- toggle history tree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- half page up and down with zz
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+
+-- paste over without yanking
+vim.keymap.set('x', '<leader>p', '"_dP')
+
+-- unmap Q
+vim.keymap.set('n', 'Q', '<Nop>')
+

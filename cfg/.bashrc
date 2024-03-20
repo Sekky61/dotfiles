@@ -181,3 +181,7 @@ welcome_message () {
 plz () {
     gh copilot suggest --target shell "$@"
 }
+
+# spawn new shell in current directory
+alias clone='x-terminal-emulator &'
+
