@@ -185,3 +185,12 @@ plz () {
 # spawn new shell in current directory
 alias clone='x-terminal-emulator &'
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+# ZVM - zig version manager
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"

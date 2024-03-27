@@ -2,7 +2,7 @@ source ~/.bash_aliases
 
 exec awesome
 
-exec numlockx
+# exec numlockx
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 

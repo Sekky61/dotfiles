@@ -37,7 +37,9 @@ Host sc-nas.fit.vutbr.cz
     HostName sc-nas.fit.vutbr.cz
     User xmajer21
     IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
 
 Host sc-gpu1
     HostName sc-gpu1.fit.vutbr.cz
     User xmajer21
+    ForwardAgent yes

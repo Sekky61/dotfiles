@@ -285,6 +285,10 @@ require('lazy').setup({
   -- history tree
   {
     'mbbill/undotree',
+  },
+  -- completions for command line
+  {
+    'hrsh7th/cmp-cmdline',
   }
 }, {})
 
@@ -537,6 +541,8 @@ end
 local servers = {
   efm = {},
 
+  zls = {},
+
   clangd = {},
   pyright = {},
   tailwindcss = {},
@@ -670,6 +676,25 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+  })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

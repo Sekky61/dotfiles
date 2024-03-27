@@ -6,5 +6,5 @@
 	name = Michal Majer
 	email = misa@majer.cz
 [core]
-	editor = code
+	editor = nvim
 	autocrlf = input
