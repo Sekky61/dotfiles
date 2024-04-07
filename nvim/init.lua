@@ -289,6 +289,10 @@ require('lazy').setup({
   -- completions for command line
   {
     'hrsh7th/cmp-cmdline',
+  },
+  {
+    -- comment toggle
+    "terrortylor/nvim-comment"
   }
 }, {})
 
@@ -541,8 +545,6 @@ end
 local servers = {
   efm = {},
 
-  zls = {},
-
   clangd = {},
   pyright = {},
   tailwindcss = {},
@@ -586,6 +588,14 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end
+}
+
+-- special config for zls from zvm
+require('lspconfig').zls.setup {
+  cmd = { 'zls' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'zig' },
 }
 
 local biome = require('efmls-configs.formatters.biome')
@@ -715,6 +725,12 @@ vim.keymap.set('i', '<C-right>', SuggestOneWord, { expr = true, remap = false, d
 
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true }
+})
+
+require('nvim_comment').setup({
+  comment_empty = true,
+  create_mappings = true,
+  operator_mapping = "<leader>c"
 })
 
 -- indent-blankline
