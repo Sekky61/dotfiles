@@ -142,14 +142,6 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
-    opts = {
-      -- See `:help onedark.txt`
-      style = 'darker',
-      highlights = {
-        -- highlight the comment color brighter
-        ["@comment"] = { fg = '#ddd' },
-      },
-    },
   },
 
   {
@@ -657,7 +649,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-s>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -714,14 +706,16 @@ local function SuggestOneCharacter()
   local bar = vim.fn['copilot#TextQueuedForInsertion']()
   return bar:sub(1, 1)
 end
-local function SuggestOneWord()
-  local suggestion = vim.fn['copilot#Accept']("")
-  local bar = vim.fn['copilot#TextQueuedForInsertion']()
-  return vim.fn.split(bar, [[[ .]\zs]])[1]
-end
 
 vim.keymap.set('i', '<C-l>', SuggestOneCharacter, { expr = true, remap = false, desc = 'Copilot accept a character.' })
-vim.keymap.set('i', '<C-right>', SuggestOneWord, { expr = true, remap = false, desc = 'Copilot accept a word.' })
+vim.keymap.set('i', '<C-right>', '<Plug>(copilot-accept-word)', { remap = false, desc = 'Copilot accept a word.' })
+
+-- set the color of the copilot suggestion
+vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
+  fg = '#A9BA9D',
+  ctermfg = 8,
+  force = true
+})
 
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true }
@@ -781,6 +775,17 @@ require 'treesitter-context'.setup {
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
+-- theme
+require('onedark').setup {
+      -- See `:help onedark.txt`
+      style = 'warm',
+      highlights = {
+        -- highlight the comment color brighter
+        ["@comment"] = { fg = '#7d7f85' },
+      },
+}
+require('onedark').load()
+
 -- jump to the context
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
@@ -818,4 +823,3 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- unmap Q
 vim.keymap.set('n', 'Q', '<Nop>')
-
