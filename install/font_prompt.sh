@@ -9,4 +9,4 @@ fc-cache -f -v # Update font cache
 
 # Starship
 cargo install starship --locked
-mv cfg/starship.toml ~/.config/starship.toml
+ln -sf ~/dotfiles/cfg/starship.toml ~/.config/starship.toml

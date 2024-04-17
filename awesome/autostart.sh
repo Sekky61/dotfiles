@@ -41,5 +41,4 @@ run() {
 }
 
 run google-chrome
-run code
 run spotify

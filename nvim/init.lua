@@ -300,6 +300,8 @@ require("toggleterm").setup {
 -- set the bottom safe area
 vim.opt.scrolloff = 8
 
+vim.opt.tabstop = 4
+
 -- Draw a line at the 80th character
 vim.opt.colorcolumn = '80'
 
@@ -388,6 +390,8 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+-- <C-q>	Send all items not filtered to quickfixlist (qflist)
+-- combine with :cdo (apply command to all items in quickfix list)
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })

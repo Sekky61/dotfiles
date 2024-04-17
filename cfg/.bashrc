@@ -185,6 +185,8 @@ plz () {
 # spawn new shell in current directory
 alias clone='x-terminal-emulator &'
 
+# editor
+export EDITOR=nvim
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -194,3 +196,8 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export ZVM_INSTALL="$HOME/.zvm/self"
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
+
+# add /opt/intel to shared library path
+# source /mnt/data/projects/intel-sgx-example/linux-sgx/linux/installer/bin/sgxsdk/environment
+source /opt/intel/sgxsdk/environment
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/sgxsdk/lib64

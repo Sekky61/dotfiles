@@ -131,7 +131,7 @@ M.globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse sset Master '5%-'") end),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master '0%'") end),
     -- then in keyboard shortcuts put your shortcut for changing layout
-   awful.key({ "Mod1" }, "Shift_L", function () kbdcfg.switch() end,
+    awful.key({ "Mod1" }, "Shift_L", function () kbdcfg.switch() end,
     {description = "Switch keyboard layout", group = "client"}),
     awful.key({ modkey }, "c", function() 
         translate.launch{api_key = '<api-key>', url = 'url'} 
