@@ -71,7 +71,6 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
-  'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
@@ -127,10 +126,29 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        local gs = package.loaded.gitsigns
+        local function map(mode, l, r, desc)
+          opts = opts or {}
+          opts.buffer = bufnr
+          opts.desc = desc
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        vim.keymap.set('n', '[c', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = 'Go to Previous [C]hange' })
+        vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to Next [C]hange' })
+        vim.keymap.set('n', '<leader>pc', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [C]hange' })
+        vim.keymap.set('n', '<leader>tB', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle [B]lame' })
+        map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>', 'Stage hunk')
+        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>', 'Reset hunk')
+        map('n', '<leader>hS', gs.stage_buffer, 'Stage buffer')
+        map('n', '<leader>ha', gs.stage_hunk, 'Stage hunk')
+        map('n', '<leader>hu', gs.undo_stage_hunk, 'Undo stage hunk')
+        map('n', '<leader>hR', gs.reset_buffer, 'Reset buffer')
+        map('n', '<leader>hp', gs.preview_hunk, 'Preview hunk')
+        map('n', '<leader>hb', function() gs.blame_line{full=true} end, 'Blame line')
+        map('n', '<leader>hd', gs.diffthis, 'Diff hunk')
+        map('n', '<leader>hD', function() gs.diffthis('~') end)
       end,
     },
   },
@@ -285,6 +303,10 @@ require('lazy').setup({
   {
     -- comment toggle
     "terrortylor/nvim-comment"
+  },
+  {
+    -- git
+    "https://tpope.io/vim/fugitive.git"
   }
 }, {})
 
@@ -398,9 +420,10 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').git_status, { desc = '[S]earch [S]tatus' })
 
 -- see treesitter symbols
-vim.keymap.set('n', '<leader>ss', require('telescope.builtin').treesitter, { desc = '[S]earch [S]ymbols' })
+vim.keymap.set('n', '<leader>sv', require('telescope.builtin').treesitter, { desc = '[S]earch [V]ariables (Symbols)' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -827,3 +850,8 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- unmap Q
 vim.keymap.set('n', 'Q', '<Nop>')
+
+-- Git
+vim.api.nvim_set_keymap("n", "<leader>gc", ":Git commit -m \"", {noremap=false})
+vim.api.nvim_set_keymap("n", "<leader>gp", ":Git push -u origin HEAD<CR>", {noremap=false})
+
