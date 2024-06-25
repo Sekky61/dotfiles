@@ -53,5 +53,10 @@
     "C_Cpp.intelliSenseCacheSize": 1000,
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on"
+    "editor.cursorSmoothCaretAnimation": "on",
+    "zig.formattingProvider": "zls",
+    "zig.initialSetupDone": true,
+    "zig.zls.path": "zls",
+    "zig.path": "zig",
+    "github.copilot.editor.enableAutoCompletions": true
 }

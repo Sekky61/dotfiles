@@ -196,6 +196,7 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export ZVM_INSTALL="$HOME/.zvm/self"
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
+alias zig-update="zvm i -D=zls master"
 
 # add /opt/intel to shared library path
 # source /mnt/data/projects/intel-sgx-example/linux-sgx/linux/installer/bin/sgxsdk/environment

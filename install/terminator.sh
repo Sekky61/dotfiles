@@ -18,5 +18,5 @@ echo "Select terminator as default emulator using: sudo update-alternatives --co
 
 # Alacritty
 
-# sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /snap/bin/alacritty 50
+# sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
 # sudo update-alternatives --config x-terminal-emulator
